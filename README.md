@@ -28,3 +28,9 @@ npm test
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+#ExcellVue
+  以excell测试BlobApi 文件上传下载
+
+#VedioVue
+  vedio.js使用联系
