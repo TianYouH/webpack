@@ -69,7 +69,8 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     new webpack.ProvidePlugin({
       jQuery: "jquery",
-      $: "jquery"
+      $: "jquery",
+      videojs: 'video.js'
     }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({

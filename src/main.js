@@ -9,10 +9,18 @@ import 'element-ui/lib/theme-default/index.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import jQuery from 'jquery'
+// import videojs from './video/index'
+// import videojs from 'video.js'
+// import 'video.js/dist/video-js.css'
+// import 'video.js/dist/lang/zh-CN'
+import VueVideoPlayer from 'vue-video-player'
+import myVideo from './components/Video'
 
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
+Vue.use(VueVideoPlayer)
+Vue.use(myVideo)
 
 /* eslint-disable no-new */
 new Vue({
@@ -21,5 +29,3 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
-
-jQuery('body').append('<h1>黄金亮大好人</h1>')

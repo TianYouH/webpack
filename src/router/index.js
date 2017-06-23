@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Excell from '@/components/Excell'
+import Excell from '@/views/Excell'
 
-import Vedio from '@/components/Vedio'
+import Video from '@/views/Video'
 
 Vue.use(Router)
 
@@ -16,8 +16,8 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'Vedio',
-      component: Vedio
+      name: 'Video',
+      component: Video
     }
   ]
 })
