@@ -12,4 +12,3 @@
 
     - `import ..., { ... } from '...'`;
     - `var { ... } = require('...')` / var ... = require('...').default;
-
