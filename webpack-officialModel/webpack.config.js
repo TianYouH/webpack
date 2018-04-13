@@ -1,10 +1,41 @@
 const path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin'); //生成或处理index.html文件
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'bundle.js',
-    // filename: 'bundle-[hash].js',
-    path: path.resolve(__dirname, 'dist')
-  }
-}  
+    filename: 'js/[name]-[hash].js',
+    path: path.resolve(__dirname, './dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },{
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ]
+      },{
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          'file-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      //模板为同级目录下的index.html，为何不用写路径，是因为默认上下文问webpack.config.js所在的文件夹
+      template: 'index.html',  //自动生成HTML文件的名字
+      //  filename:'index-[hash].html',  //引入打包后的js的script标签所在的位置,这里表示放在head标签中
+      //  inject:'head',  //可以向模板传递参数，然后应用于自动生成的html,(模板需要获取参数)
+      title: '黄金亮你好帅啊',  //任何的参数都是可以传递的
+      date: new Date()
+    })
+  ]
+}
