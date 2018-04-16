@@ -10,7 +10,12 @@ module.exports = {
   },
   output: {
     filename: 'js/[name]-bundle.js',
-    path: path.resolve(__dirname, './dist')
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/' //publicPath 会在服务器脚本用到，确保文件资源能够在 http://localhost:??? 下正确访问
+  },
+  devtool: 'inline-source-map', //为了更容易地追踪错误和警告，JavaScript 提供了 source map 功能
+  devServer: {  //在 localhost:8080 下建立服务，将 dist 目录下的文件，作为可访问文件。
+    contentBase: './dist'
   },
   plugins: [
     new clearWebpackPlugin(['dist']),
