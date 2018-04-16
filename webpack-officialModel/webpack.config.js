@@ -7,27 +7,6 @@ module.exports = {
     filename: 'js/[name]-[hash].js',
     path: path.resolve(__dirname, './dist')
   },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      },{
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader'
-        ]
-      },{
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: [
-          'file-loader'
-        ]
-      }
-    ]
-  },
   plugins: [
     new HtmlWebpackPlugin({
       //模板为同级目录下的index.html，为何不用写路径，是因为默认上下文问webpack.config.js所在的文件夹
