@@ -1,21 +1,33 @@
 const path = require('path');
-var htmlWebpackPlugin = require('html-webpack-plugin'); //生成或处理index.html文件
-var clearWebpackPlugin = require('clean-webpack-plugin'); //清理构建文件夹
+const htmlWebpackPlugin = require('html-webpack-plugin'); //生成或处理index.html文件
+const clearWebpackPlugin = require('clean-webpack-plugin'); //清理构建文件夹
+const webpack = require('webpack');
 
 module.exports = {
   // entry: './src/index.js',
   entry: {
-    app: './src/index.js',
-    print: './src/print.js'
+    app: './src/index.js'
   },
   output: {
     filename: 'js/[name]-bundle.js',
     path: path.resolve(__dirname, './dist'),
     publicPath: '/' //publicPath 会在服务器脚本用到，确保文件资源能够在 http://localhost:??? 下正确访问
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
+    ]
+  },
   devtool: 'inline-source-map', //为了更容易地追踪错误和警告，JavaScript 提供了 source map 功能
   devServer: {  //在 localhost:8080 下建立服务，将 dist 目录下的文件，作为可访问文件。
-    contentBase: './dist'
+    contentBase: './dist',
+    hot: true
   },
   plugins: [
     new clearWebpackPlugin(['dist']),
@@ -26,6 +38,8 @@ module.exports = {
       //  inject:'head',  //可以向模板传递参数，然后应用于自动生成的html,(模板需要获取参数)
       title: '黄金亮你好帅啊',  //任何的参数都是可以传递的
       date: new Date()
-    })
+    }),
+    new webpack.NamedModulesPlugin(), //NamedModulesPlugin，以便更容易查看要修补(patch)的依赖
+    new webpack.HotModuleReplacementPlugin()
   ]
 }

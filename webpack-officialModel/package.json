@@ -10,7 +10,8 @@
     "test2": "npx webpack --config webpack.config.js",
     "watch": "webpack --watch",
     "start": "webpack-dev-server --open",
-    "server": "node server.js"
+    "server": "node server.js",
+    "start1": "webpack-dev-server --hotOnly"
   },
   "author": "天幽",
   "license": "ISC",
