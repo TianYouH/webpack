@@ -1,4 +1,5 @@
-import _ from 'lodash';
+// import _ from 'lodash';
+import { cube } from './math';
 import printMe from './print';
 import './style.css'
 
@@ -7,7 +8,11 @@ function component() {
   var element = document.createElement('div');
   var btn = document.createElement('button');
 
-  element.innerHTML = _.join(['你好a', 'webpack'], '');
+  // element.innerHTML = _.join(['你好a', 'webpack'], '');
+  element.innerHTML = [
+    '你号webpack,',
+    '10++的立方是' +  cube(10)
+  ].join('\n\n');
 
   btn.innerHTML = '点我 快点我';
   btn.onclick = printMe;
