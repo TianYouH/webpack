@@ -5,13 +5,16 @@ const uglifyJSPlugin = require('uglifyjs-webpack-plugin'); //优化打包，移�
 const webpack = require('webpack');
 
 module.exports = {
+  mode: 'development',
   // entry: './src/index.js',
   entry: {
-    app: './src/index.js'
+    app: './src/index.js',
+    // another: './src/another-module.js'
   },
   output: {
     filename: 'js/[name]-bundle.js',
     path: path.resolve(__dirname, './dist'),
+    chunkFilename: '[name].bundle.js',
     publicPath: '/' //publicPath 会在服务器脚本用到，确保文件资源能够在 http://localhost:??? 下正确访问
   },
   module: {
@@ -41,7 +44,31 @@ module.exports = {
       title: '黄金亮你好帅啊',  //任何的参数都是可以传递的
       date: new Date()
     }),
-    new webpack.NamedModulesPlugin(), //NamedModulesPlugin，以便更容易查看要修补(patch)的依赖
-    new webpack.HotModuleReplacementPlugin()
+    // new webpack.optimize.SplitChunksPlugin({
+    //   cacheGroups: { // 这里开始设置缓存的 chunks
+    //     default: {
+    //       minChunks: 2,
+    //       priority: -20, // 缓存组优先级
+    //       reuseExistingChunk: true, // 可设置是否重用该chunk（查看源码没有发现默认值）
+    //     },
+    //     //打包重复出现的代码
+    //     vendor: {
+    //       name: 'vendor', // 要缓存的 分隔出来的 chunk 名称
+    //       chunks: 'initial', // 必须三选一： "initial" | "all" | "async"(默认就是异步)
+    //       minChunks: 2,  // 最小 chunk ，默认1
+    //       maxAsyncRequests: 1, // 最大异步请求数， 默认1
+    //       maxInitialRequests: 5, // 最大初始化请求数，默认1
+    //       minSize: 0 // 这个示例太小，不能创建commons块。
+    //     },
+    //     //打包第三方类库
+    //     commons: {
+    //       name: "commons",
+    //       chunks: "initial",
+    //       minChunks: Infinity
+    //     }
+    //   }
+    // }),
+    // new webpack.NamedModulesPlugin(), //NamedModulesPlugin，以便更容易查看要修补(patch)的依赖
+    // new webpack.HotModuleReplacementPlugin()
   ]
 }
