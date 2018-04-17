@@ -4,24 +4,19 @@ import { cube } from './math';
 function component() {
 
   var element = document.createElement('div');
-  var btn = document.createElement('button');
 
   // element.innerHTML = _.join(['你好a', 'webpack'], '');
   element.innerHTML = [
     '你号webpack,',
-    '10++的立方是' + cube(10)
+    '10++的立方huhu' + cube(10)
   ].join('\n\n');
+
+  if (process.env.NODE_ENV) {
+    console.log(process.env.NODE_ENV)
+  }
 
   return element;
 }
 
 let element = component(); // 当 print.js 改变导致页面重新渲染时，重新获取渲染的元素
 document.body.appendChild(element);
-
-if (module.hot) {
-  module.hot.accept('./print.js', function () {
-    document.body.removeChild(element);
-    element = component();  // 重新渲染页面后，component 更新 click 事件处理
-    document.body.appendChild(element);
-  })
-}

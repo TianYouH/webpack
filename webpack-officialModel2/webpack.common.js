@@ -9,11 +9,12 @@ module.exports = {
   plugins: [
     new cleanWebpackPlugin(['dist']),
     new htmlWebpackPlugin({
-      title: '大家好'
+      title: '大家好',
+      template: './index.html'
     })
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: 'js/[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   }
 }
