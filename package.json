@@ -34,6 +34,9 @@
       "subjectPatternErrorMsg": "subject does not match subject pattern!",
       "helpMessage": "",
       "autoFix": false
+    },
+    "ghooks": {
+      "commit-msg": "./node_modules/validate-commit-msg"
     }
   }
 }
