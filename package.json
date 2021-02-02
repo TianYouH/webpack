@@ -9,34 +9,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0",
-    "validate-commit-msg": "^2.14.0",
     "webpack-cli": "^4.4.0"
   },
   "dependencies": {
     "webpack": "^5.19.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    },
-    "validate-commit-msg": {
-      "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "build", "ci", "chore", "revert"],
-      "scope": {
-        "required": false,
-        "allowed": ["*"],
-        "validate": false,
-        "multiple": false
-      },
-      "warnOnFail": false,
-      "maxSubjectLength": 100,
-      "subjectPattern": ".+",
-      "subjectPatternErrorMsg": "subject does not match subject pattern!",
-      "helpMessage": "",
-      "autoFix": false
-    },
-    "ghooks": {
-      "commit-msg": "./node_modules/validate-commit-msg"
-    }
   }
 }
