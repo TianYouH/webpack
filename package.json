@@ -19,8 +19,10 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    },
-    "husky": {
+    }
+  },
+  "husky": {
+    "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
     }
   }
